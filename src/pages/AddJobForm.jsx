@@ -70,6 +70,11 @@ const AddJobForm = () => {
                 <div className="space-y-2">
                     <label htmlFor="description">Description</label>
                     <textarea {...register('description')} id="description" rows="4" placeholder="Add any job duties, expectations, requirements, etc"></textarea>
+                    {errors.description &&
+                        <p className="text-red-700 text-sm">
+                            {errors.description.message}
+                        </p>
+                    }
                 </div>
 
                 <div className="space-y-2">
@@ -87,11 +92,21 @@ const AddJobForm = () => {
                         <option value="$175K - 200K">$175K - $200K</option>
                         <option value="Over $200K">Over $200K</option>
                     </select>
+                    {errors.salary &&
+                        <p className="text-red-700 text-sm">
+                            {errors.salary.message}
+                        </p>
+                    }
                 </div>
 
                 <div className="space-y-2">
                     <label htmlFor="location">Location</label>
                     <input {...register('location')} type="text" id="location" placeholder="Company Location" />
+                    {errors.location &&
+                        <p className="text-red-700 text-sm">
+                            {errors.location.message}
+                        </p>
+                    }
                 </div>
 
                 <h3 className="border-y border-gray-400 py-4 font-semibold text-xl text-slate-700">Company Info</h3>
@@ -99,21 +114,41 @@ const AddJobForm = () => {
                 <div className="space-y-2">
                     <label htmlFor="company">Company Name</label>
                     <input {...register('cName')} type="text" id="company" placeholder="Company Name" />
+                    {errors.cName &&
+                        <p className="text-red-700 text-sm">
+                            {errors.cName.message}
+                        </p>
+                    }
                 </div>
 
                 <div className="space-y-2">
                     <label htmlFor="company_description">Company Description</label>
                     <textarea {...register('cDescription')} id="company_description" rows="4" placeholder="What does your company do?"></textarea>
+                    {errors.cDescription &&
+                        <p className="text-red-700 text-sm">
+                            {errors.cDescription.message}
+                        </p>
+                    }
                 </div>
 
                 <div className="space-y-2">
                     <label htmlFor="contact_email">Contact Email</label>
                     <input {...register('cEmail')} type="email" id="contact_email" placeholder="Email address for applicants" />
+                    {errors.cEmail &&
+                        <p className="text-red-700 text-sm">
+                            {errors.cEmail.message}
+                        </p>
+                    }
                 </div>
 
                 <div className="space-y-2">
                     <label htmlFor="contact_phone">Contact Phone</label>
                     <input {...register('cPhone')} type="tel" id="contact_phone" placeholder="Optional phone for applicants" />
+                    {errors.cPhone &&
+                        <p className="text-red-700 text-sm">
+                            {errors.cPhone.message}
+                        </p>
+                    }
                 </div>
 
                 <button

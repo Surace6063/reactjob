@@ -3,7 +3,7 @@ import { Banknote, LocateFixed } from "lucide-react"
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
-const JobList = () => {
+const JobList = ({ type }) => {
     const [jobs, setJobs] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState('')
@@ -12,7 +12,7 @@ const JobList = () => {
         const getJobs = async () => {
             setIsLoading(true)
             try {
-                const res = await axios.get('http://localhost:3000/jobs')
+                const res = await axios.get(type ? `http://localhost:3000/jobs?type=${type}` : 'http://localhost:3000/jobs')
                 setJobs(res.data)
             } catch (error) {
                 console.log(error);
@@ -22,7 +22,7 @@ const JobList = () => {
             }
         }
         getJobs()
-    }, [])
+    }, [type])
 
     if (isLoading) return <span>loading...</span>
 

@@ -14,11 +14,13 @@ const Navbar = () => {
                 </div>
 
                 {/* nav links */}
-                <ul className="flex gap-4 text-lg font-bold text-slate-800">
+                <ul className="flex gap-4 text-lg font-semibold text-slate-800">
                     <Link to='/'>
                         <li>Home</li>
                     </Link>
-                    <li>Jobs</li>
+                    <Link to='/jobs'>
+                        <li>Jobs</li>
+                    </Link>
                     <Link to='/addjob'>
                         <li>Add job</li>
                     </Link>
