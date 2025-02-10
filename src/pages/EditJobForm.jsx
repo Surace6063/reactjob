@@ -1,18 +1,34 @@
 import axios from "axios"
 import { useForm } from "react-hook-form"
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { yupResolver } from '@hookform/resolvers/yup';
 import { JobFormValidationSchema } from "../utils/JobFormValidation";
 import toast from "react-hot-toast";
 
-const AddJobForm = () => {
+const EditJobForm = () => {
+    const navigate = useNavigate()
+    const location = useLocation()
+    const job = location?.state?.job
+
     const { register, handleSubmit, formState: {
         errors, isSubmitting
     } } = useForm({
-        resolver: yupResolver(JobFormValidationSchema)
+        resolver: yupResolver(JobFormValidationSchema),
+        defaultValues: {
+            type: job?.type || "",
+            title: job?.title || "",
+            description: job?.description || "",
+            salary: job?.salary || "",
+            location: job?.location || "",
+            cName: job?.company?.name || "",
+            cDescription: job?.company?.description || "",
+            cEmail: job?.company?.contactEmail || "",
+            cPhone: job?.company?.contactPhone || "",
+        }
     })
 
-    const navigate = useNavigate()
+
+
 
     const onSubmit = async (data) => {
         const formData = {
@@ -31,8 +47,8 @@ const AddJobForm = () => {
         }
         try {
             await axios.
-                post('http://localhost:3000/jobs', formData)
-            toast.success("Job added successfully!")
+                put(`http://localhost:3000/jobs/${job?.id}`, formData)
+            toast.success("Job updated successfully!")
             navigate('/')
         } catch (error) {
             console.log(error);
@@ -40,7 +56,7 @@ const AddJobForm = () => {
     }
     return (
         <div className="my-10 max-w-xl mx-auto px-4 border border-slate-300 p-4 rounded-md">
-            <h1 className="text-center text-2xl font-bold text-teal-600 mb-10">Add Job</h1>
+            <h1 className="text-center text-2xl font-bold text-teal-600 mb-10">Update Job</h1>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div className="space-y-2">
                     <label htmlFor="type">Job Type</label>
@@ -120,11 +136,11 @@ const AddJobForm = () => {
                     disabled={isSubmitting}
                     className="w-full bg-teal-600 text-white py-2 rounded-md">
                     {
-                        isSubmitting ? 'submitting...' : 'Submit'
+                        isSubmitting ? 'submitting...' : 'Update'
                     }
                 </button>
             </form>
         </div>
     )
 }
-export default AddJobForm
+export default EditJobForm
