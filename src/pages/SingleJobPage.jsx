@@ -41,7 +41,7 @@ const SingleJobPage = () => {
                         {job?.company?.description}
                     </p>
                 </div>
-                <div className="border my-6" />
+                <div className="border border-slate-200 my-6" />
                 <div>
                     <h1 className="text-2xl font-semibold text-gray-800 mb-4">Job Info</h1>
                     <span className="text-teal-700 mb-2 font-semibold">{job?.type}</span>
@@ -60,7 +60,7 @@ const SingleJobPage = () => {
                 </div>
             </div>
 
-            <div className="border my-10 md:hidden"></div>
+            <div className="border border-slate-200 my-10 md:hidden"></div>
 
             {/* sidebar */}
             <div className='basis-[40%]'>
@@ -76,13 +76,13 @@ const SingleJobPage = () => {
                         <p className="text-gray-600 text-sm italic">{job?.company?.contactPhone}</p>
                     </div>
                 </div>
-                <div className="my-8 border" />
+                <div className="my-8 border border-slate-200" />
                 <div>
                     <h3 className="text-xl font-bold mb-6">Manage Job</h3>
                     <button className='mr-2'>
                         Edit Job
                     </button>
-                    <button >
+                    <button>
                         Delete Job
                     </button>
                 </div>
