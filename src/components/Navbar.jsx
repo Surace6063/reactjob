@@ -1,4 +1,5 @@
 import { BriefcaseBusiness } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
@@ -14,9 +15,13 @@ const Navbar = () => {
 
                 {/* nav links */}
                 <ul className="flex gap-4 text-lg font-bold text-slate-800">
-                    <li>Home</li>
+                    <Link to='/'>
+                        <li>Home</li>
+                    </Link>
                     <li>Jobs</li>
-                    <li>Add job</li>
+                    <Link to='/addjob'>
+                        <li>Add job</li>
+                    </Link>
                 </ul>
 
                 {/* right */}

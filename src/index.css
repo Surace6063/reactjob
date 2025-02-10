@@ -3,5 +3,10 @@
 input,
 select,
 textarea {
-  @apply w-full p-2 rounded-md border border-slate-300 placeholder:text-sm focus:outline-none focus:border-teal-400;
+  @apply w-full border border-slate-300 p-2 rounded-md
+   focus:outline-none focus:border-teal-500;
+}
+
+label {
+  @apply font-semibold text-slate-800;
 }
